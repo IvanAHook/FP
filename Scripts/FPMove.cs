@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace FP
 {
+	// Todo separate input from movement fully...
 	public class FPMove
 	{
 		private CharacterController characterController;
@@ -21,7 +22,7 @@ namespace FP
 			this.characterController = characterController;
 			this.playerTransform = playerTransform;
 	        
-			moveInput.performed += MoveOnPerformed;
+			moveInput.performed += MoveInputOnPerformed;
 			moveInput.canceled += MoveInputOnCanceled;
 		}
 
@@ -30,7 +31,7 @@ namespace FP
 			characterController.Move(move * movementSpeed * Time.deltaTime);
 		}
         
-		private void MoveOnPerformed(InputAction.CallbackContext ctx)
+		private void MoveInputOnPerformed(InputAction.CallbackContext ctx)
 		{
 			Vector2 moveRaw = ctx.ReadValue<Vector2>();
 			move = playerTransform.right * moveRaw.x + playerTransform.forward * moveRaw.y;
