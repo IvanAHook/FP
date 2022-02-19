@@ -11,12 +11,13 @@ namespace FP
 		private FPPlayerActions fpPlayerActions;
 		private FPPlayerActions.PlayerControlsActions controls;
 
+		// todo swappable configs for controller/kbd mouse
 		private FPMouseLook mouseLook;
 		private FPMove movement;
 		
 		private void Awake()
 		{
-			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.lockState = CursorLockMode.Locked; // todo handle in mouse look
 			
 			fpPlayerActions = new FPPlayerActions();
 			controls = fpPlayerActions.PlayerControls;
